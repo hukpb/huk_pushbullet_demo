@@ -13,14 +13,13 @@ app.use(bodyParser.json());
 
 var port = process.env.PORT || 8080;        // set our port
 
-// dummy database - a hack for purposes of this demo, also it would be a db model, and assigned as new User()
+// dummy database for purposes of this demo.  It would normally be a db model, and assigned as new User()
 global.users = [];
 
 
 // ROUTES FOR OUR API
 // =============================================================================
 var router = express.Router();              // get an instance of the express Router
-
 
 // Initial test route, should be prefixed at /api
 router.get('/', function (req, res) {
@@ -62,7 +61,7 @@ router.route('/register')
         console.log('accessToken is: ' + accessToken)
 
         // I would check if username and token conforms to a standard, but we don't have that info 
-        // I am assuming that as long as we have been given one, and it doesn't already exist then it's fair- game to register
+        // I am assuming that as long as we have been given one, and it doesn't already exist then it's fair-game to register
         if (username && accessToken) {
             
             // When working with C# I use Linq lambda expressions, so I prefer this way instead of classic for loop, but I realise it's not always supported'
@@ -97,7 +96,7 @@ router.route('/users')
         // Fetching a list of all users does not require that you have already registered a user in order to view them, so no auth required
         if (users.length > 0) {
 
-            // this would all be much easier if this were a model - anyway, remove the key
+            // remove the key propety before returning it in the response
             var copy = JSON.parse(JSON.stringify(users)); //this is the magic that actually creates a deep copy and stops it from keeping a reference to global users
 
             copy.forEach(function (element) {
