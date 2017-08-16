@@ -1,4 +1,4 @@
-# huk_pushbullet_demo
+# mph_pushbullet_demo
 demo application
 
 Please test using postman or something similar
@@ -6,6 +6,7 @@ Please test using postman or something similar
 Endpoints:
 
 POST: localhost:8080/api/register
+
 This registers you, you will need to supply your own username and Access Tokens
 example JSON body:
 {
@@ -14,10 +15,12 @@ example JSON body:
 }
 
 GET: localhost:8080/api/users
-No restrictions, a simple way to show registered users.  Registered user list is only maintained for lifespan of server
+
+No restrictions, it's just a simple way to show the registered users.  The registered user list is only maintained for the lifespan of the server
 
 POST: localhost:8080/api/notify
-Only required to send username.  Supply the access token in header e.g. Access-Token: 12345example
+
+This only requires a username and the access token in header e.g. Access-Token: 12345example
 example JSON body:
 {
     "username": "myuser"
