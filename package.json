@@ -1,0 +1,18 @@
+{
+  "name": "hukpb",
+  "version": "1.0.0",
+  "description": "pushbullet demo",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matthew Huk",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.5.0",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "request": "^2.81.0",
+    "uuid": "^3.1.0"
+  }
+}
