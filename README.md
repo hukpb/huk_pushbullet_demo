@@ -7,21 +7,21 @@ Endpoints:
 
 POST: localhost:8080/api/register
 
-This registers you, you will need to supply your own username and Access Tokens
+This registers you, you will need to supply your own username and Access Token
 
 example JSON body:
 {
     "username": "myuser",
-    "accessToken": "12345example"
+    "accessToken": "12345"
 }
 
 GET: localhost:8080/api/users
 
-No restrictions, it's just a simple way to show the registered users.  The registered user list is only maintained for the lifespan of the server
+This has no restrictions, it's just a simple way to show the registered users.  The registered user list is only maintained for the lifespan of the server.
 
 POST: localhost:8080/api/notify
 
-This only requires a username and the access token in header e.g. Access-Token: 12345example
+This only requires a username and the access token in header e.g. Access-Token: 12345
 
 example JSON body:
 {
