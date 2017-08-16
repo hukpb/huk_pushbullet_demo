@@ -1,5 +1,5 @@
 # mph_pushbullet_demo
-demo application
+This is a demo application.  To run it, install node and then navigate to the project directory using the command line, and then run the command 'node app.js'
 
 Please test using postman or something similar
 
