@@ -36,12 +36,13 @@ app.use(function (err, req, res, next) {
 
     console.error(err);
 
-    // Would normally shield clients from internal errors, and log them, but for purposes of demo ...
+    // We would normally shield clients from internal errors, and log them, but for purposes of this demo it is being logged here.
     res.status(500).send({ status: 500, message: 'internal error: ' + err.message, type: 'internal' });
 })
 
 function addUser(key, username, token) {
-    // Add user to table, using "key" as a primary-key.  Demo spec doesn't say anything about unique users, but I'm working on the assumption that the same user can't be added twice'
+    // Add user to table, using "key" as a primary-key.  
+    // Demo spec doesn't say anything about unique users, but I'm working on the assumption that the same user with the same access token can't be added twice'
     var user = { "key": key, "username": username, "accessToken": token, "creationTime": new Date().toISOString(), "numOfNotificationsPushed": 0 };
     users.push(user);
     return user;
@@ -60,7 +61,8 @@ router.route('/register')
         console.log('username is: ' + username)
         console.log('accessToken is: ' + accessToken)
 
-        // I would check if username and token conforms to a standard, but we don't have that info so just assume that as long as we have one, and it doesn't exist then it's fair-game to register
+        // I would check if username and token conforms to a standard, but we don't have that info 
+        // I am assuming that as long as we have been given one, and it doesn't already exist then it's fair- game to register
         if (username && accessToken) {
             
             // When working with C# I use Linq lambda expressions, so I prefer this way instead of classic for loop, but I realise it's not always supported'
@@ -74,13 +76,13 @@ router.route('/register')
 
             } else
             {
-                // A duplicate access token shouldn't exist at all, but for purposes of the demo a different user can have the same access token...
+                  // A duplicate access token shouldn't exist at all, but for the purposes of the demo a different user can have the same access token.
                 res.status(400).send({ status: 400, message: 'A user with that name and access token already exists' }); 
             }
 
         } else {
 
-            // I'm going to return a 400, but there is a debate on if missing property should be 404
+             // I'm going to return a 400, but there is debate if a missing property should mean 404
             res.status(400).send({ status: 400, message: 'Missing required paramaters: username was ' + username + ' and token was ' + accessToken});
         }
     });
@@ -92,7 +94,7 @@ router.route('/users')
     // fetch all users (accessed at GET http://localhost:8080/api/users)
     .get(function (req, res) {
 
-        // The task does not say that fetching a list of all users requires that you have already registered a user in order to view others, so no auth required
+        // Fetching a list of all users does not require that you have already registered a user in order to view them, so no auth required
         if (users.length > 0) {
 
             // this would all be much easier if this were a model - anyway, remove the key
